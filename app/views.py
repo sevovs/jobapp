@@ -8,10 +8,19 @@ from django.template import loader
 
 # Create your views here.
 
+class TempClass:
+    x = 5
+
+
+
 def hello(request):
-    template = loader.get_template('hello.html')
-    context = {}
-    return HttpResponse(template.render(context, request))
+    temp = TempClass()
+    lst = ['alpha', 'beta']
+    h = 'George'
+    is_athenticated = False
+    context = {'name': 'Django', 'age': 10, 'first_list': lst, 'temp_object': temp, 'user': h
+               , "is_athenticated": is_athenticated}
+    return render(request, 'app/hello.html', context)
 
 job_title = [
     "First Job",
